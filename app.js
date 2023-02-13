@@ -36,7 +36,7 @@ const alumneSchema = new Schema({
 //model de dades
 const AlumneModel = mongoose.model('Alumne', alumneSchema);
 const alumne1 = new AlumneModel({ nom: "SERGI", email: 'sergi', nota: 10 });
-const alumne2 = new AlumneModel({ nom: "JOAN", email: 'sergi', nota: 8 });
+const alumne2 = new AlumneModel({ nom: "JOAN", email: 'joan', nota: 4 });
 
 
 alumne1.save((err) => {
