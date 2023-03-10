@@ -1,0 +1,55 @@
+doctype html
+html
+  head
+    title= title
+    link(rel='stylesheet', href='../stylesheets/style.css')
+  body
+
+nav#main-nav.main-nav
+ul.menu
+  li.menu__item: a.menu__link(href="/Register") Registrar-se
+  li.menu__item: a.menu__link(href="/Login") Login
+  li.menu__item: a.menu__link(href="/Inici") Inicio
+  li.menu__item: a.menu__link(href="/Informacio") Informacio
+  li.menu__item: a.menu__link(href="/MisEventos") Mis Eventos
+  li.menu__item: a.menu__link(href="/Formulari") Formulari
+  li.menu__item: a.menu__link(href="/Calendar") Calendari 
+  li.menu__item: a.menu__link(href="/Ubicacions") Ubicacions
+  li.menu__item: a.menu__link(href="/Contact") Contacte
+
+
+ul#actividades
+  li.draggable(deporte) Deportes
+  li.draggable(estudio) Estudio
+  li.draggable(arte) Arte
+  li.draggable(relajacion) Relajación
+  li.draggable(Musica) Musica
+  li.draggable(Botanica) Botanica
+
+
+
+
+form#ofrecer-actividad(action="/Calendar", method="post")
+  br
+  br
+  label(for="nombre-actividad") Nombre de la actividad:
+
+  input(type="text", name="nombre-actividad", required)
+  br 
+  br 
+  br 
+  label(for="descripcion-actividad") Descripción de la actividad:
+  textarea(name="descripcion-actividad", required)
+  br
+  br
+  br 
+  br
+  label(for="horas-actividad") Horas disponibles para la actividad:
+  input(type="text", name="horas-actividad", required)
+  br
+  input(type="hidden", name="tipo-actividad")
+  br
+  br
+  button(type="submit") Enviar
+ 
+
