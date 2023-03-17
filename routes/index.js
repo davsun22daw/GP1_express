@@ -6,8 +6,12 @@ router.get('/', function(req, res, next) {
   res.render('index', { title: 'Express' });
 });
 
-router.get('/Formulari', function(req, res,  next) {
+router.get('/formulari', function(req, res,  next) {
   res.render('formulari', { titol: 'Formulari de Activitats' });
+});
+
+router.get('/calendari', function(req, res,  next) {
+  res.render('calendari', { titol: 'Calendari' });
 });
 
 module.exports = router;
