@@ -1,0 +1,26 @@
+doctype html
+html
+  head
+    title= title
+    link(rel="leaflet",href="../leaflet/leaflet.css")
+    link(rel="stylesheet", href="../stylesheets/style.css")
+  body
+    #container
+      include menu
+      br
+      br
+      p Mapa:
+      br
+
+      #mapa
+    script(src="../leaflet/leaflet.js")
+    script.
+      document.addEventListener('DOMContentLoaded', () => {
+        L.Icon.Default.imagePath = '/leaflet/images/';
+        const map = L.map('mapa').setView([40.4165, -3.7026], 12);
+        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+          attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors',
+          maxZoom: 18,
+        }).addTo(map);
+        L.marker([40.4165, -3.7026]).addTo(map).bindPopup('Madrid');
+      });

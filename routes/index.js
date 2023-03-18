@@ -14,4 +14,8 @@ router.get('/calendari', function(req, res,  next) {
   res.render('calendari', { titol: 'Calendari' });
 });
 
+router.get('/mapa', function(req, res,  next) {
+  res.render('mapa', { titol: 'Mapa' });
+});
+
 module.exports = router;

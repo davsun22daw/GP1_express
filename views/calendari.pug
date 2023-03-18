@@ -4,18 +4,7 @@ html
     title= title
     link(rel='stylesheet', href='../stylesheets/style.css')
   body
-    nav#main-nav.main-nav
-      ul.menu
-        li.menu__item: a.menu__link(href="/Register") Registrar-se
-        li.menu__item: a.menu__link(href="/Login") Login
-        li.menu__item: a.menu__link(href="/Inici") Inicio
-        li.menu__item: a.menu__link(href="/Informacio") Informacio
-        li.menu__item: a.menu__link(href="/MisEventos") Mis Eventos
-        li.menu__item: a.menu__link(href="/formulari") Formulari
-        li.menu__item: a.menu__link(href="/calendari") Calendari 
-        li.menu__item: a.menu__link(href="/Ubicacions") Ubicacions
-        li.menu__item: a.menu__link(href="/Contact") Contacte
-
+    include menu
     .container
       #tareas
         ul
@@ -23,5 +12,4 @@ html
           li(draggable="true") Tarea 2
           li(draggable="true") Tarea 3
       canvas#calendari(width="630", height="480")
-
     script(src="../javascripts/calendari.js")

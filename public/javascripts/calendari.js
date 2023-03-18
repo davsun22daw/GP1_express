@@ -63,7 +63,7 @@ function handleDrop(e) {
   if (draggedItem !== this) {
     
     const rect = canvas.getBoundingClientRect();
-    let x = (e.clientX - rect.left)-20;
+    let x = (e.clientX - rect.left)-30;
     let y = (e.clientY - rect.top);
     // Establecer un tamaño de fuente fijo antes de dibujar el texto
     ctx.font = '20px Arial';
