@@ -4,22 +4,22 @@ html(lang="en")
         meta(charset="UTF-8")
         meta(http-equiv="X-UA-Compatible", content="IE=edge")
         meta(name="viewport", content="width=device-width, initial-scale=1.0")
-        title Iniciar Sesión
+        title Registrarse
         link(rel='stylesheet', href='../stylesheets/style.css')
     body
-    <br><br><br><br><br><br>
-        form(action="/comproba", method="POST")
-            h2 Iniciar Sesión
+        form(action="/crea", method="POST")
+            h2 Registrarse
             .section
-                .title Username
+                .title Nom d'usuari
                 .field
                     input(type="text", id="nomLogin", name="nomLogin")
             .section
-                .title Password
+                .title Contrasenya
                 .field
                     input(type="password", id="ContrasenyaLogin", name="ContrasenyaLogin")
             .section
                 .button
-                    input(type="submit", value="Iniciar Sesión")
+                    input(type="submit", value="Registrarse")
                 .button
-                    a(href="/crea") Registrarse
+                    a(href="/") Iniciar Sesión
+
