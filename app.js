@@ -6,11 +6,57 @@ const path = require('path');
 const logger = require('morgan');
 const cookieParser = require('cookie-parser');
 const bodyParser = require('body-parser');
+const mongoose = require('mongoose');
 
 const indexRouter = require('./routes/index');
 const usersRouter = require('./routes/users');
 
 const app = express();
+
+mongoose.set('strictQuery', false);
+
+main().catch(err => console.log(err));
+
+async function main() {
+  try {
+      await mongoose.connect('mongodb://127.0.0.1:27017/daw2');
+      await guardarAlumnos();
+  } catch (err) {
+      console.log(err);
+  }
+}
+
+const Schema = mongoose.Schema;
+
+//esquema alumne
+const alumneSchema = new Schema({
+    nom: String,
+    email: String,
+    nota: {
+        type: Number,
+        min: 0,
+        max: 10,
+        required: [true, "No pot ser no avaluat"],
+    }
+});
+
+//model de dades
+const AlumneModel = mongoose.model('Alumne', alumneSchema);
+const alumne1 = new AlumneModel({ nom: "SERGI", email: 'sergi', nota: 10 });
+const alumne2 = new AlumneModel({ nom: "JOAN", email: 'sergi', nota: 8 });
+
+async function guardarAlumnos() {
+  try {
+      await alumne1.save();
+      console.log('Alumno 1 guardado');
+  
+      await alumne2.save();
+      console.log('Alumno 2 guardado');
+  } catch (err) {
+      console.log(err);
+  }
+}
+
 
 
 const privateKey = fs.readFileSync('private-key.pem', 'utf8');
