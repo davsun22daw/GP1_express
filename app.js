@@ -15,7 +15,6 @@ const usersRouter = require('./routes/users');
 
 const app = express();
 
-
 const privateKey = fs.readFileSync('private-key.pem', 'utf8');
 const certificate = fs.readFileSync('cert.pem', 'utf8');
 const credentials = { key: privateKey, cert: certificate };
@@ -40,53 +39,50 @@ app.get('/crea', (req, res) => {
 });
 
 app.post('/crea', async (req, res) => {
-  const { nomLogin, ContrasenyaLogin } = req.body;
-  console.log(`User recibida en el backend: ${nomLogin}`);
-  console.log(`Contraseña recibida en el backend: ${ContrasenyaLogin}`);
+  const { nomLogin, ContrasenyaLogin, role } = req.body;
 
   try {
     await mongoose.connect('mongodb://127.0.0.1:27017/GP1');
-    // Crear una nueva instancia del modelo User
-    const user = new User({ nomLogin, ContrasenyaLogin });
-    
-    // Guardar el nuevo usuario en la base de datos
+    const user = new User({ nomLogin, ContrasenyaLogin, role });
     await user.save();
-    
-    // Enviar una respuesta al cliente indicando que el usuario ha sido registrado exitosamente
-    res.status(200).send('Usuario registrado exitosamente');
+    mongoose.connection.close(); // cerrar la conexión a la base de datos
+    res.status(200).send('Usuari registrat correctament. <a href="/">Inici de sessió</a>');
     
   } catch (error) {
-    // Manejar errores durante el registro del usuario
-    console.error(`Error al registrar usuario: ${error}`);
-    res.status(500).send('Error al registrar usuario');
+    if (error.name === 'MongoNetworkError') {
+      console.error('Error de connexió a la base de dades');
+      res.status(500).send('Error de connexió a la base de dades <a href="/">Inici de sessió</a>');
+    } else {
+      console.error(`Error en registrar usuari: ${error}`);
+      res.status(500).send('Error en registrar usuari: <a href="/">Inici de sessió</a>');
+    }
   }
 });
 
 app.post('/comproba', async (req, res) => {
-  const { nomLogin, ContrasenyaLogin } = req.body;
+  const { nomLogin, ContrasenyaLogin, role } = req.body;
 
   try {
     await mongoose.connect('mongodb://127.0.0.1:27017/GP1');
-    const user = await User.findOne({ nomLogin });
+    const user = await User.findOne({ nomLogin, role });
     if (!user) {
-      res.status(404).send('El usuario no existe');
+      res.status(404).send('Usuari no existent <a href="/">Inici de sessió</a>');
     } else {
       const validContrasenyaLogin = await bcrypt.compare(ContrasenyaLogin, user.ContrasenyaLogin);
       if (validContrasenyaLogin) {
-        // Redirigir al usuario a la página de inicio si la autenticación es exitosa
         res.redirect('/calendari');
       } else {
-        res.status(401).send('Contraseña incorrecta');
+        res.status(401).send('Contrasenya incorrecta <a href="/">Inici de sessió</a>');
       }
     }
   } catch (error) {
-    console.error(`Error al autenticar usuario: ${error}`);
-    res.status(500).send('Error al autenticar usuario');
+    console.error(`Error en autenticar usuari: ${error}`);
+    res.status(500).send('Error en autenticar usuari <a href="/">Inici de sessió</a>');
   }
 });
 
 app.use(function(req, res, next) {
-  const error = new Error('Página no encontrada');
+  const error = new Error('Pàgina no trobada <a href="/">Inici de sessió</a>');
   error.status = 404;
   next(error);
 });
@@ -99,7 +95,7 @@ app.use(function(err, req, res, next) {
 });
 
 httpsServer.listen(443, () => {
-  console.log('Es en HTTPS y el protocolo es 443 porsi acaso');
+  console.log('Es en HTTPS y el protocolo es 443 por si acaso');
   console.log('https://localhost/calendari');
 });
 

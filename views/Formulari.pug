@@ -11,10 +11,10 @@ include menu
 ul#actividades
   li.draggable(deporte) Deportes
   li.draggable(estudio) Estudio
-  li.draggable(arte) Arte
-  li.draggable(relajacion) Relajación
-  li.draggable(Musica) Musica
-  li.draggable(Botanica) Botanica
+  li.draggable(arte) Art
+  li.draggable(relajacion) Relaxació
+  li.draggable(Musica) Música
+  li.draggable(Botanica) Botànica
 
 
 
@@ -22,19 +22,19 @@ ul#actividades
 form#ofrecer-actividad(action="/Calendar", method="post")
   br
   br
-  label(for="nombre-actividad") Nombre de la actividad:
+  label(for="nombre-actividad") Nom de l'activitat:
 
   input(type="text", name="nombre-actividad", required)
   br 
   br 
   br 
-  label(for="descripcion-actividad") Descripción de la actividad:
+  label(for="descripcion-actividad") Descripció de l'activitat:
   textarea(name="descripcion-actividad", required)
   br
   br
   br 
   br
-  label(for="horas-actividad") Horas disponibles para la actividad:
+  label(for="horas-actividad") Hores disponibles per a l'activitat:
   input(type="text", name="horas-actividad", required)
   br
   input(type="hidden", name="tipo-actividad")

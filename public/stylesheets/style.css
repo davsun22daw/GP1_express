@@ -1,3 +1,6 @@
+/* Fuentes */
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
+
 * {
   box-sizing: border-box;
 }
@@ -6,7 +9,94 @@ body {
   margin: 0;
   padding: 0;
   font-family: "Lucida Grande", Helvetica, Arial, sans-serif;
+  font-size: 16px;
+  color: #333;
+  background-color: #f2f2f2;
 }
+
+/* Estilos del formulario */
+form {
+  max-width: 500px; /* aumenta el ancho máximo del formulario */
+  margin: 0 auto;
+  padding: 30px; /* aumenta el espacio interior del formulario */
+  background-color: #fff;
+  border-radius: 5px;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+  /* Agregar estilos de centrado */
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+form h2 {
+  margin-top: 0;
+}
+
+.section {
+  margin-bottom: 20px;
+}
+
+.title {
+  font-weight: bold;
+  margin-bottom: 5px;
+}
+
+.field input {
+  display: block;
+  width: 100%;
+  padding: 15px; /* aumenta el relleno en los campos */
+  font-size: 18px; /* aumenta el tamaño de la fuente */
+  border: 1px solid #ccc;
+  border-radius: 3px;
+  background-color: #fff;
+  transition: border-color 0.2s ease-in-out;
+}
+
+.field select option {
+  padding: 10px;
+  font-size: 18px;
+}
+
+.field input:focus {
+  border-color: #4a90e2;
+  outline: none;
+}
+
+.button {
+  text-align: center;
+}
+
+.button input[type="submit"] {
+  display: block;
+  width: 100%;
+  padding: 15px; /* aumenta el relleno en los campos */
+  font-size: 18px; /* aumenta el tamaño de la fuente */
+  border: 1px solid #ccc;
+  border-radius: 3px;
+  background-color: #fff;
+  transition: border-color 0.2s ease-in-out;
+}
+
+.button input[type="submit"]:hover {
+  background-color: #357ae8;
+}
+
+.button a {
+  display: block;
+  width: 100%;
+  padding: 15px; /* aumenta el relleno en los campos */
+  font-size: 18px; /* aumenta el tamaño de la fuente */
+  border: 1px solid #ccc;
+  border-radius: 3px;
+  background-color: #fff;
+  transition: border-color 0.2s ease-in-out;
+}
+
+.button a:hover {
+  border-color: #4a90e2;
+}
+
 
 a {
   color: #00B7FF;

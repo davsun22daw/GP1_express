@@ -11,13 +11,19 @@ html(lang="en")
         form(action="/comproba", method="POST")
             h2 Iniciar Sesión
             .section
-                .title Username
+                .title Nom d'usuari
                 .field
                     input(type="text", id="nomLogin", name="nomLogin")
             .section
-                .title Password
+                .title Contrasenya
                 .field
                     input(type="password", id="ContrasenyaLogin", name="ContrasenyaLogin")
+            .section
+                .title Rol
+                .field
+                      select(id="role" name="role")
+                        option(value="admin") Administrador
+                        option(value="user") Usuari normal
             .section
                 .button
                     input(type="submit", value="Iniciar Sesión")

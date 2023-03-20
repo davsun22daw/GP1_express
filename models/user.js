@@ -5,7 +5,12 @@ const saltRounds = 10;
 
 const UserSchema = new mongoose.Schema({
   nomLogin: { type: String, required: true, unique: true },
-  ContrasenyaLogin: { type: String, required: true }
+  ContrasenyaLogin: { type: String, required: true },
+  role: {
+    type: String,
+    enum: ['admin', 'user'],
+    default: 'user'
+  }
 });
 
 UserSchema.pre('save', async function (next) {
