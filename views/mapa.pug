@@ -20,3 +20,20 @@ html
         }).addTo(map);
         L.marker([41.41283872125865, 2.1904812420523525]).addTo(map).bindPopup('Lloc de reunio');
       });
+      function showPosition(position) {
+      var lat = position.coords.latitude;
+      var lng = position.coords.longitude;
+      document.getElementById("coordinates").innerHTML = "LLatitud: " + lat + "<br>Longitud: " + lng;
+      }
+      function getCoordinates() {
+      if (navigator.geolocation) {
+      navigator.geolocation.getCurrentPosition(showPosition);
+      } else {
+      alert("Geolocation is not supported by this browser.");
+      }
+      }
+
+  body
+    p Coordenadas:
+    button(type="button" onclick="getCoordinates()") Get Coordinates
+    p#coordinates

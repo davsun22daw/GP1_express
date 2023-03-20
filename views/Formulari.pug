@@ -11,35 +11,44 @@ include menu
 ul#actividades
   li.draggable(deporte) Deportes
   li.draggable(estudio) Estudio
-  li.draggable(arte) Art
-  li.draggable(relajacion) Relaxació
-  li.draggable(Musica) Música
-  li.draggable(Botanica) Botànica
+  li.draggable(arte) Arte
+  li.draggable(relajacion) Relajación
+  li.draggable(Musica) Musica
+  li.draggable(Botanica) Botanica
 
 
 
 
-form#ofrecer-actividad(action="/Calendar", method="post")
-  br
-  br
-  label(for="nombre-actividad") Nom de l'activitat:
+doctype html
+html
+  head
+    title= title
+    link(rel='stylesheet', href='../stylesheets/style.css')
+  body
 
-  input(type="text", name="nombre-actividad", required)
-  br 
-  br 
-  br 
-  label(for="descripcion-actividad") Descripció de l'activitat:
-  textarea(name="descripcion-actividad", required)
-  br
-  br
-  br 
-  br
-  label(for="horas-actividad") Hores disponibles per a l'activitat:
-  input(type="text", name="horas-actividad", required)
-  br
-  input(type="hidden", name="tipo-actividad")
-  br
-  br
-  button(type="submit") Enviar
- 
+    include menu
 
+    form(action="/formulari", method="POST")
+      div
+        label(for="nombre") Nombre de la actividad
+        input(type="text", id="nombre", name="nombre", required)
+
+      div
+        label(for="id") ID de la actividad
+        input(type="text", id="id", name="id", required)
+
+      div
+        label(for="descripcion") Descripción de la actividad
+        input(type="text", id="descripcion", name="descripcion", required)
+
+      div
+        label(for="concepto") Concepto general de la actividad
+        input(type="text", id="concepto", name="concepto", required)
+
+      div
+        label(for="duracion") Duración de la actividad
+        input(type="text", id="duracion", name="duracion", required)
+
+      button(type="submit") Agregar actividad
+
+    script(src='../javascripts/formulari.js')

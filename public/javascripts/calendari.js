@@ -1,9 +1,34 @@
+let tareaList = document.querySelector('#tareas ul');
+
+// Recorrer todas las claves almacenadas en sessionStorage
+for (let i = 1; i <= sessionStorage.length; i++) {
+  // Obtener los datos de la actividad almacenados en sessionStorage
+  let datosActividad = JSON.parse(sessionStorage.getItem(`datosActividad${i}`));
+
+  // Crear un nuevo <li> con los datos de la actividad
+  let tarea = document.createElement('li');
+  tarea.draggable = true;
+  tarea.textContent = datosActividad.nombre;
+
+  // Agregar el nuevo <li> a la lista de tareas
+  tareaList.appendChild(tarea);
+}
+
+
+
+
+
+
+
+
+
+
 let MIDA = 90; // tamaño de cada celda en píxeles
 let TOPMARGE = 30;
 let DiasSemana = ["Dilluns", "Dimarts", "Dimecres", "Dijous", "Divendres", "Dissabte", "Diumenge"];
 let canvas = document.getElementById('calendari');
 let ctx = canvas.getContext('2d');
-
+var actividades = [{nombre: 'Actividad 1'}, {nombre: 'Actividad 2'}];
 canvas.style.width = '630px';
 canvas.style.height = '480px';
 
@@ -91,3 +116,23 @@ calendar.addEventListener('drop', handleDrop, false);
 
 
 window.addEventListener('load', dibuixar, false);
+
+function mostrarActividades() {
+  let actividades = [];
+  for (let i = 1; i <= contador; i++) {
+    let datosActividad = sessionStorage.getItem(`datosActividad${i}`);
+    if (datosActividad) {
+      let actividad = JSON.parse(datosActividad);
+      actividades.push(actividad);
+    }
+  }
+  const listaTareas = document.querySelector('#tareas ul');
+  actividades.forEach((actividad) => {
+    const tarea = document.createElement('li');
+    tarea.draggable = true;
+    tarea.textContent = actividad.nombre;
+    listaTareas.appendChild(tarea);
+  });
+}
+
+mostrarActividades();

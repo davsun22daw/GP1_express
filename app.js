@@ -36,6 +36,12 @@ app.get('/crea', (req, res) => {
   res.render('crea');
 });
 
+app.get('/calendari', function(req, res) {
+  // Define actividades here, e.g.:
+  var actividades = [{nombre: 'Actividad 1'}, {nombre: 'Actividad 2'}];
+  res.render('calendari', {actividades: actividades});
+});
+
 app.post('/crea', async (req, res) => {
   const { nomLogin, ContrasenyaLogin, role } = req.body;
 
