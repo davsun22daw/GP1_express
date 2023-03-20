@@ -4,29 +4,20 @@ html(lang="en")
         meta(charset="UTF-8")
         meta(http-equiv="X-UA-Compatible", content="IE=edge")
         meta(name="viewport", content="width=device-width, initial-scale=1.0")
-        title= titol
+        title Iniciar Sesión
         link(rel='stylesheet', href='../stylesheets/style.css')
     body
-    <br><br><br>
-    if missatge
-    p= missatge
-    <br><br><br>
+    <br><br><br><br><br><br>
         form(action="/comproba", method="POST")
             h2 Iniciar Sesión
             .section
-                .title Nom d'usuari
+                .title Username
                 .field
                     input(type="text", id="nomLogin", name="nomLogin")
             .section
-                .title Contrasenya
+                .title Password
                 .field
                     input(type="password", id="ContrasenyaLogin", name="ContrasenyaLogin")
-            .section
-                .title Rol
-                .field
-                      select(id="role" name="role")
-                        option(value="admin") Administrador
-                        option(value="user") Usuari normal
             .section
                 .button
                     input(type="submit", value="Iniciar Sesión")

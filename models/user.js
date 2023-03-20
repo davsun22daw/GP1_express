@@ -1,20 +1,15 @@
-const bcrypt = require("bcrypt");
-const mongoose = require("mongoose");
+const bcrypt = require('bcrypt');
+const mongoose = require('mongoose');
 
 const saltRounds = 10;
 
 const UserSchema = new mongoose.Schema({
   nomLogin: { type: String, required: true, unique: true },
-  ContrasenyaLogin: { type: String, required: true },
-  role: {
-    type: String,
-    enum: ["admin", "user"],
-    default: "user",
-  },
+  ContrasenyaLogin: { type: String, required: true }
 });
 
-UserSchema.pre("save", async function (next) {
-  if (!this.isModified("ContrasenyaLogin")) {
+UserSchema.pre('save', async function (next) {
+  if (!this.isModified('ContrasenyaLogin')) {
     return next();
   }
 
@@ -28,21 +23,14 @@ UserSchema.pre("save", async function (next) {
   }
 });
 
-UserSchema.methods.isCorrectContrasenyaLogin = function (
-  ContrasenyaLogin,
-  callback
-) {
-  bcrypt.compare(
-    ContrasenyaLogin,
-    this.ContrasenyaLogin,
-    function (err, result) {
-      if (err) {
-        callback(err);
-      } else {
-        callback(null, result);
-      }
+UserSchema.methods.isCorrectContrasenyaLogin = function (ContrasenyaLogin, callback) {
+  bcrypt.compare(ContrasenyaLogin, this.ContrasenyaLogin, function (err, result) {
+    if (err) {
+      callback(err);
+    } else {
+      callback(null, result);
     }
-  );
-};
+  });
+}
 
-module.exports = mongoose.model("User", UserSchema);
+module.exports = mongoose.model('User', UserSchema);
