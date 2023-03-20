@@ -2,18 +2,14 @@ doctype html
 html
   head
     title= title
-    link(rel="leaflet",href="../leaflet/leaflet.css")
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" />
     link(rel="stylesheet", href="../stylesheets/style.css")
   body
-    #container
-      include menu
-      br
-      br
-      p Mapa:
-      br
-
-      #mapa
-    script(src="../leaflet/leaflet.js")
+    include menu
+    .container
+      #map-container
+        #mapa
+    script(src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js")
     script.
       document.addEventListener('DOMContentLoaded', () => {
         L.Icon.Default.imagePath = '/leaflet/images/';

@@ -12,9 +12,7 @@ const User = require('./models/user');
 const ContrasenyaLogin = 'contraseñaSegura';
 const indexRouter = require('./routes/index');
 const usersRouter = require('./routes/users');
-
 const app = express();
-
 const privateKey = fs.readFileSync('private-key.pem', 'utf8');
 const certificate = fs.readFileSync('cert.pem', 'utf8');
 const credentials = { key: privateKey, cert: certificate };
