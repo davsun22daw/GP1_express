@@ -44,7 +44,8 @@ app.post('/crea', async (req, res) => {
     const user = new User({ nomLogin, ContrasenyaLogin, role });
     await user.save();
     mongoose.connection.close(); // cerrar la conexión a la base de datos
-    res.status(200).send('Usuari registrat correctament. <a href="/">Inici de sessió</a>');
+    res.redirect('/loginExit');
+    //res.status(200).send('Usuari registrat correctament. <a href="/">Inici de sessió</a>');
     
   } catch (error) {
     if (error.name === 'MongoNetworkError') {
@@ -94,7 +95,7 @@ app.use(function(err, req, res, next) {
 
 httpsServer.listen(443, () => {
   console.log('Es en HTTPS y el protocolo es 443 por si acaso');
-  console.log('https://localhost/calendari');
+  console.log('https://localhost/');
 });
 
 module.exports = app;

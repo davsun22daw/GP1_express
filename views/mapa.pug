@@ -13,10 +13,10 @@ html
     script.
       document.addEventListener('DOMContentLoaded', () => {
         L.Icon.Default.imagePath = '/leaflet/images/';
-        const map = L.map('mapa').setView([40.4165, -3.7026], 12);
+        const map = L.map('mapa').setView([41.41283872125865, 2.1904812420523525], 12);
         L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
           attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors',
           maxZoom: 18,
         }).addTo(map);
-        L.marker([40.4165, -3.7026]).addTo(map).bindPopup('Madrid');
+        L.marker([41.41283872125865, 2.1904812420523525]).addTo(map).bindPopup('Lloc de reunio');
       });
